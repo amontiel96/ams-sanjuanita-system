@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Modelo/ClsM_DataLogin.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1723876319088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1723876319088,
+            "name": "Commit-0",
+            "content": "/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\n\r\npackage Modelo;\r\n\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport javax.swing.JOptionPane;\r\n/**\r\n *\r\n * @author Arturo\r\n */\r\npublic class ClsM_DataLogin {\r\n    public String usuario,contraseña;\r\n\r\n    public String getUsuario() {\r\n        return usuario;\r\n    }\r\n\r\n    public void setUsuario(String usuario) {\r\n        this.usuario = usuario;\r\n    }\r\n\r\n    public String getContraseña() {\r\n        return contraseña;\r\n    }\r\n\r\n    public void setContraseña(String contraseña) {\r\n        this.contraseña = contraseña;\r\n    }\r\n\r\n    public ResultSet getResultado() {\r\n        return resultado;\r\n    }\r\n\r\n    public void setResultado(ResultSet resultado) {\r\n        this.resultado = resultado;\r\n    }\r\n    ResultSet resultado;\r\n    \r\n    public boolean ingresar() \r\n    {\r\n      boolean badera = false;\r\n      try\r\n      {\r\n         resultado = con.consultar(\"select * from tblusuarios\");\r\n         while(resultado.next())\r\n         {\r\n           if(this.getNombre().equals(resultado.getObject(\"vchUser\")) && this.getContraseña().equals(resultado.getObject(\"vchPass\")))\r\n             {\r\n                 badera=true;\r\n             }\r\n         }\r\n         resultado.close();\r\n      }\r\n      catch(SQLException e)\r\n      {\r\n          JOptionPane.showMessageDialog(null,e.toString());\r\n     }\r\n      return badera;\r\n  }\r\n}\r\n"
+        }
+    ]
+}

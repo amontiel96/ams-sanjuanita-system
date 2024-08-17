@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Modelo/ClsMCategorias.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1723876371512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1723876371512,
+            "name": "Commit-0",
+            "content": "/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\npackage Modelo;\r\n\r\nimport javax.swing.JOptionPane;\r\nimport javax.swing.table.DefaultTableModel;\r\n\r\n/**\r\n *\r\n * @author Arturo\r\n */\r\npublic class ClsMCategorias {\r\n    private String id,nombre;\r\n    MBD cnn=new MBD();\r\n    public String getId() {\r\n        return id;\r\n    }\r\n\r\n    public void setId(String id) {\r\n        this.id = id;\r\n    }\r\n\r\n    public String getNombre() {\r\n        return nombre;\r\n    }\r\n\r\n    public void setNombre(String nombre) {\r\n        this.nombre = nombre;\r\n    }\r\n     public boolean guardarProveedor() \r\n    {\r\n        String sql=\"insert into tblcategoria values ('\"+ this.getId() +\"','\"+ this.getNombre() +\"')\";\r\n      System.out.println(sql);\r\n     boolean band;\r\n        try {            \r\n            cnn.procesos(sql);            \r\n            band=true;\r\n        } catch (Exception ex) {\r\n            JOptionPane.showMessageDialog(null, ex.getMessage());\r\n            band=false;\r\n        }\r\n     return band;\r\n  }\r\n     Object[][] dat;\r\n     public DefaultTableModel llenartabla()\r\n  {\r\n      DefaultTableModel dato=null;\r\n      try\r\n      {\r\n          String[] titulos={\"CLAVE\",\"CATEGORIA\"};\r\n          String consulta;\r\n          consulta = \"select * from tblcategoria\";\r\n          String[] columnas={\"VCH_ID_CATEGORIA\",\"VCH_NOM_CATEGORIA\",};\r\n          dat= cnn.getDatos(consulta, columnas);\r\n          dato= new DefaultTableModel(dat,titulos);\r\n      }catch(Exception ex){}\r\n      return dato;\r\n  }\r\n    public boolean eliminar()\r\n    {\r\n        String sql=\"delete tblcategoria where vch_id_categoria='\"+this.getId()+\"'\";\r\n        System.out.println(sql);\r\n        boolean band;\r\n        try\r\n        {\r\n            cnn.procesos(sql);\r\n            band=true;\r\n        }\r\n        catch(Exception e)\r\n        {\r\n            JOptionPane.showMessageDialog(null, e.getMessage());\r\n            band=false;\r\n        }\r\n        return band;\r\n    }\r\n    public boolean editar()\r\n    {\r\n        String sql=\"update tblcategoria set vch_nom_categoria='\"+this.getNombre()+\"' where vch_id_categoria='\"+this.getId()+\"'\";\r\n        System.out.println(sql);\r\n        boolean band;\r\n        try\r\n        {\r\n            cnn.procesos(sql);\r\n            band=true;\r\n        }\r\n        catch(Exception e)\r\n        {\r\n            JOptionPane.showMessageDialog(null, e.getMessage());\r\n            band=false;\r\n        }\r\n        return band;\r\n    }\r\n    \r\n}\r\n"
+        }
+    ]
+}

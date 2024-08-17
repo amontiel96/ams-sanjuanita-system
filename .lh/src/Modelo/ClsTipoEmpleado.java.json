@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Modelo/ClsTipoEmpleado.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1723876565028,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1723876565028,
+            "name": "Commit-0",
+            "content": "/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\npackage Modelo;\r\n\r\nimport javax.swing.JOptionPane;\r\nimport javax.swing.table.DefaultTableModel;\r\n\r\n/**\r\n *\r\n * @author Arturo\r\n */\r\npublic class ClsTipoEmpleado {\r\n    private String id,tipo;\r\n    MBD cnn=new MBD();\r\n    public String getId() {\r\n        return id;\r\n    }\r\n\r\n    public void setId(String id) {\r\n        this.id = id;\r\n    }\r\n\r\n    public String getTipo() {\r\n        return tipo;\r\n    }\r\n\r\n    public void setTipo(String tipo) {\r\n        this.tipo = tipo;\r\n    }\r\n    public boolean guardarProveedor() \r\n    {\r\n        String sql=\"INSERT INTO TBL_TIPO VALUES('\"+ this.getId()+\"','\"+this.getTipo()+\"')\";\r\n      System.out.println(sql);\r\n     boolean band;\r\n        try {            \r\n            cnn.procesos(sql);            \r\n            band=true;\r\n        } catch (Exception ex) {\r\nJOptionPane.showMessageDialog(null, ex.getMessage());\r\n            band=false;\r\n        }\r\n     return band;\r\n  }\r\n     Object[][] dat;\r\n     public DefaultTableModel llenartabla()\r\n  {\r\n      DefaultTableModel dato=null;\r\n      try\r\n      {\r\n          String[] titulos={\"CLAVE\",\"TIPO\"};\r\n          String consulta;\r\n          consulta = \"select * from tbl_tipo\";\r\n          String[] columnas={\"vch_id_tipo\",\"vch_tipo\"};\r\n          dat= cnn.getDatos(consulta, columnas);\r\n          dato= new DefaultTableModel(dat,titulos);\r\n      }catch(Exception ex){}\r\n      return dato;\r\n  }\r\n    public boolean eliminar()\r\n    {\r\n        String sql=\"delete tbl_tipo where vch_id_tipo='\"+this.getId()+\"'\";\r\n        System.out.println(sql);\r\n        boolean band;\r\n        try\r\n        {\r\n            cnn.procesos(sql);\r\n            band=true;\r\n        }\r\n        catch(Exception e)\r\n        {\r\n            JOptionPane.showMessageDialog(null, e.getMessage());\r\n            band=false;\r\n        }\r\n        return band;\r\n    }\r\n    public boolean editar()\r\n    {\r\n        String sql=\"update tbl_tipo set vch_tipo='\"+this.getTipo()+\"' where vch_id_tipo='\"+this.getId()+\"'\";\r\n        System.out.println(sql);\r\n        boolean band;\r\n        try\r\n        {\r\n            cnn.procesos(sql);\r\n            band=true;\r\n        }\r\n        catch(Exception e)\r\n        {\r\n            JOptionPane.showMessageDialog(null, e.getMessage());\r\n            band=false;\r\n        }\r\n        return band;\r\n    }\r\n    \r\n}\r\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Modelo/cls_conexion.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1723876147956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1723876147956,
+            "name": "Commit-0",
+            "content": "package Modelo;\r\nimport java.awt.HeadlessException;\r\nimport java.sql.Connection;\r\nimport java.sql.DriverManager;\r\nimport java.sql.SQLException;\r\nimport javax.swing.JOptionPane;\r\n\r\n/**\r\n *\r\n * \r\n */\r\npublic class cls_conexion {\r\n    \r\n    public Connection cnn;\r\n    \r\n    \r\n    public void connectar(String host, String bd,String usuario,String pwd)\r\n    {\r\n        try\r\n        {\r\n            Class.forName(\"oracle.jdbc.OracleDriver\");\r\n            String dirBd= \"jdbc:oracle:thin:@\"+host+\":1521:\"+bd;\r\n            cnn = DriverManager.getConnection(dirBd,usuario,pwd);\r\n            JOptionPane.showMessageDialog(null, \"Conectado\");\r\n        }catch(ClassNotFoundException | SQLException | HeadlessException e)\r\n        {\r\n            JOptionPane.showMessageDialog(null, \"NO conectado\"+e.getMessage());\r\n        }\r\n    }\r\n    \r\n}\r\n"
+        }
+    ]
+}

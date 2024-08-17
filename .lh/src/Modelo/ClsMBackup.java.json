@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Modelo/ClsMBackup.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1723876353060,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1723876353060,
+            "name": "Commit-0",
+            "content": "/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\npackage Modelo;\r\n\r\n\r\n\r\nimport java.io.DataInputStream;\r\nimport java.io.IOException;\r\nimport java.io.PrintStream;\r\nimport java.io.RandomAccessFile;\r\nimport java.net.Socket;\r\n\r\n/**\r\n *\r\n * @author Arturo\r\n */\r\npublic class ClsMBackup {\r\n    private String nombre,tipo,pwd,user,dias,host;\r\n\r\n    public String getHost() {\r\n        return host;\r\n    }\r\n\r\n    public void setHost(String host) {\r\n        this.host = host;\r\n    }\r\n\r\n    public String getDias() {\r\n        return dias;\r\n    }\r\n\r\n    public void setDias(String dias) {\r\n        this.dias = dias;\r\n    }\r\n public static RandomAccessFile rf;\r\n    public String getPwd() {\r\n        return pwd;\r\n    }\r\n\r\n    public void setPwd(String pwd) {\r\n        this.pwd = pwd;\r\n    }\r\n\r\n    public String getUser() {\r\n        return user;\r\n    }\r\n\r\n    public void setUser(String user) {\r\n        this.user = user;\r\n    }\r\n\r\n    public String getNombre() {\r\n        return nombre;\r\n    }\r\n\r\n    public void setNombre(String nombre) {\r\n        this.nombre = nombre;\r\n    }\r\n\r\n    public String getTipo() {\r\n        return tipo;\r\n    }\r\n\r\n    public void setTipo(String tipo) {\r\n        this.tipo = tipo;\r\n    }\r\n    public boolean crearBackup(){\r\n        Socket servidor;\r\n        int numClinte=0;\r\n        \r\n        try {\r\n            rf = new RandomAccessFile(\"conexion.txt\", \"r\");\r\n          \r\n            user=rf.readUTF();\r\n            pwd=rf.readUTF();\r\n            host=rf.readUTF();\r\n            servidor = new Socket(host, 5000);\r\n\r\n            DataInputStream datos = new DataInputStream(servidor.getInputStream());\r\n            System.out.println(datos.readLine());\r\n            PrintStream ps = new PrintStream(servidor.getOutputStream());\r\n            ps.println(\"Gracias por aceptarme\");\r\n\r\n            ps.println(this.user);\r\n            ps.println(this.pwd);\r\n            ps.println(this.getNombre());\r\n            ps.println(this.getDias());\r\n            ps.println(this.getTipo());\r\n            servidor.close();\r\n            return true;\r\n        } catch (IOException ex) {\r\n            System.out.println(\"error: \" +  ex.getMessage());\r\n            return false;\r\n        }\r\n    }\r\n}\r\n\r\n"
+        }
+    ]
+}

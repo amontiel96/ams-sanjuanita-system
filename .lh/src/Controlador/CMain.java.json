@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controlador/CMain.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1723875519575,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1723875519575,
+            "name": "Commit-0",
+            "content": "/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\n\r\npackage Controlador;\r\n\r\nimport Vista.Splash;\r\n\r\n/**\r\n *\r\n * @author Arturo\r\n */\r\npublic class CMain {\r\n     public static void main(String[] args)\r\n    {\r\n       \r\n        Splash fr=new Splash();\r\n        CSplash c=new CSplash(fr);\r\n        c.frm_load();\r\n    }\r\n}\r\n"
+        }
+    ]
+}

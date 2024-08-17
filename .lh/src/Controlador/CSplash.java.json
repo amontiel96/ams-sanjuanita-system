@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Controlador/CSplash.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1723875626685,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1723875626685,
+            "name": "Commit-0",
+            "content": "/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\npackage Controlador;\r\n\r\nimport Modelo.MBD;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\nimport java.util.logging.Level;\r\nimport java.util.logging.Logger;\r\nimport javax.swing.JOptionPane;\r\nimport javax.swing.Timer;\r\nimport javax.swing.UIManager;\r\nimport Vista.*;\r\nimport java.util.Calendar;\r\nimport java.util.GregorianCalendar;\r\nimport org.jvnet.substance.SubstanceLookAndFeel;\r\n\r\n/**\r\n *\r\n * @author Arturo\r\n */\r\npublic class CSplash extends javax.swing.JFrame implements Runnable{\r\n    private Timer timer;\r\n    GregorianCalendar tiempo=new GregorianCalendar();\r\n    int hora,minutos,segundos;\r\n    \r\n    MBD con=new MBD();\r\n    public Timer objetotimer;\r\n    Splash fram=null;\r\n    public int a;\r\n    Thread t;\r\n    public CSplash(Splash _frm)\r\n    {\r\n        fram=_frm;\r\n     \r\n     \r\n    }\r\n    private void formWindowOpened(java.awt.event.WindowEvent eve){\r\n        \r\n        \r\n        \r\n    }\r\n    public void frm_load()\r\n    {\r\n\r\n    fram.setTitle(\"San Juanita - Principal\");\r\n        fram.setVisible(true);\r\n        run();\r\n    }\r\n    \r\n    \r\n    \r\n    \r\n     public void run()\r\n    {\r\n        objetotimer = new Timer(50,new claseTimer());\r\n        try {\r\n            objetotimer.start();\r\n            fram.setLocationRelativeTo(null);\r\n            fram.setVisible(true);\r\n            t.sleep(5500);\r\n            fram.dispose();\r\n\r\n                if(con.conectar())//una vez optenida las variables enviar ala conexion\r\n                {\r\n                    try{\r\n                    JFrmMenuPrincipal frm=new JFrmMenuPrincipal();\r\n                    CMPrincipal cp=new CMPrincipal(frm);\r\n                   \r\n                    cp.Form_Load();\r\n                    }\r\n                    catch(Exception e){\r\n                    JOptionPane.showMessageDialog(this,\"error con el servidor\"+e);\r\n                    }\r\n                        \r\n                }\r\n                else\r\n                {\r\n                    JFrmDatosConexion conexion=new JFrmDatosConexion();\r\n                    CDatosConexion co=new CDatosConexion(conexion);\r\n                    co.frm_load();\r\n                    \r\n                }\r\n            \r\n        }\r\n  \r\n        catch (InterruptedException ex) {\r\n            Logger.getLogger(CSplash.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n    \r\n    public class claseTimer implements ActionListener\r\n    {\r\n        @Override\r\n        public void actionPerformed(ActionEvent e) {\r\n          a= fram.jProgressBar1.getValue();\r\n          if (a <100){\r\n              a++;\r\n              fram.jProgressBar1.setValue(a);\r\n               }\r\n          }                  \r\n        }\r\n}"
+        }
+    ]
+}
